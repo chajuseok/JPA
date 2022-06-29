@@ -8,11 +8,20 @@ import java.util.Date;
 public class Member {
 
     @Id // pk 매핑
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 값 할당
+    @GeneratedValue(strategy = GenerationType.AUTO) // 자동 값 할당
+    @Column(name = "MEMBER_ID")
     private Long id;
 
-    @Column(name = "name", nullable = false) //DB 컬럼에 맞게 설정
+    @Column(name = "USERNAME") //DB 컬럼에 맞게 설정
     private String username;
+
+//    @Column(name= "TEAM_ID")
+//    private Long teamID;
+
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
+
 
     public Long getId() {
         return id;
@@ -30,6 +39,18 @@ public class Member {
         this.username = username;
     }
 
-    public Member() {
+    public Team getTeam() {
+        return team;
     }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+//    public Long getTeamID() {
+//        return teamID;
+//    }
+//
+//    public void setTeamID(Long teamID) {
+//        this.teamID = teamID;
+//    }
 }
