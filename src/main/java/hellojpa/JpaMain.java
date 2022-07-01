@@ -15,32 +15,19 @@ public class JpaMain {
         tx.begin();
         try {
 
-            Team team = new Team();
-            team.setName("TeamA");
+//            Movie movie = new Movie();
+//            movie.setDirector("BBB");
+//            movie.setActor("AAAAA");
+//            movie.setName("ddd");
+//            movie.setPrice(100);
+//            em.persist(movie);
+//
+//            em.flush();
+//            em.clear();
+//            Movie find = em.find(Movie.class, movie.getId());
+//            System.out.println("find : "  + find);
 
-            //멤버 관리
-            em.persist(team);
 
-            Member member = new Member();
-            member.setUsername("member1");
-            member.setTeam(team);
-            em.persist(member);
-
-            Member member1 = new Member();
-            member1.setUsername("member2");
-            member1.setTeam(team);
-            em.persist(member1);
-
-            em.flush();
-            em.clear();
-            System.out.println("#####");
-            Member findMember = em.find(Member.class, member.getId());
-
-            List<Member> members = findMember.getTeam().getMembers();
-
-            for(Member m : members){
-                System.out.println("m = " + m.getUsername());
-            }
             tx.commit(); // insert 쿼리를 transaction commit 순간 발생
         }catch (Exception e){
             tx.rollback();
