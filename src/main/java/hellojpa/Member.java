@@ -1,12 +1,10 @@
 package hellojpa;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity // JPA가 매핑할 클래스
 //@Table(name = "USER") 데이터베이스 USER table에 매핑
-public class Member extends BaseEntity {
+public class Member  {
 
     @Id // pk 매핑
     @GeneratedValue // 자동 값 할당
@@ -16,12 +14,42 @@ public class Member extends BaseEntity {
     @Column(name = "USERNAME") //DB 컬럼에 맞게 설정
     private String username;
 
+//    //기간 period
+//    private LocalDateTime startDate;
+//    private LocalDateTime endDate;
+    @Embedded
+    private Period workPeriod;
+
+
+    //주소
+//    private String city;
+//    private String street;
+//    private String zipcodes;
+    @Embedded
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Period getWorkPeriod() {
+        return workPeriod;
+    }
+
+    public void setWorkPeriod(Period workPeriod) {
+        this.workPeriod = workPeriod;
+    }
+
 //    @Column(name= "TEAM_ID")
 //    private Long teamID;
-
-    @ManyToOne
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "TEAM_ID")
+//    private Team team;
 
 
 
@@ -45,22 +73,22 @@ public class Member extends BaseEntity {
         this.username = username;
     }
 
-    public Team getTeam() {
-        return team;
-    }
-
-//    public Locker getLocker() {
-//        return locker;
+//    public Team getTeam() {
+//        return team;
 //    }
 //
-//    public void setLocker(Locker locker) {
-//        this.locker = locker;
+////    public Locker getLocker() {
+////        return locker;
+////    }
+////
+////    public void setLocker(Locker locker) {
+////        this.locker = locker;
+////    }
+//
+//    public void setTeam(Team team) {
+//        this.team = team;
+//        team.getMembers().add(this);
 //    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-        team.getMembers().add(this);
-    }
 //    public Long getTeamID() {
 //        return teamID;
 //    }

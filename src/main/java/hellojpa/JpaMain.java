@@ -15,17 +15,22 @@ public class JpaMain {
         tx.begin();
         try {
 
-//            Movie movie = new Movie();
-//            movie.setDirector("BBB");
-//            movie.setActor("AAAAA");
-//            movie.setName("ddd");
-//            movie.setPrice(100);
-//            em.persist(movie);
+            Member member = new Member();
+            member.setUsername("AA");
+            member.setAddress(new Address("dd","DD","CC"));
+            member.setWorkPeriod(new Period());
+            em.persist(member);
 //
-//            em.flush();
-//            em.clear();
-//            Movie find = em.find(Movie.class, movie.getId());
-//            System.out.println("find : "  + find);
+//            Parent parent = new Parent();
+//            Child child1 = new Child();
+//            Child child2 = new Child();
+//
+////            parent.addChild(child1);
+////            parent.addChild(child2);
+//            em.persist(child1);
+//            em.persist(child2);
+//            em.persist(parent);
+
 
 
             tx.commit(); // insert 쿼리를 transaction commit 순간 발생
